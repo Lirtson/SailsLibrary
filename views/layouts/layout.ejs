@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Realtime Sails</title>
+
+  <!-- Viewport mobile tag for sensible mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+  <!--STYLES-->
+  <link rel="stylesheet" href="/dependencies/bootstrap-4/bootstrap-4.css">
+  <link rel="stylesheet" href="/dependencies/fontawesome.css">
+  <link rel="stylesheet" href="/styles/importer.css">
+  <!--STYLES END-->
+
+  <style media="screen">
+    .page{
+      position:absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      overflow:hidden;
+      text-align: center;
+      background-color: black;
+    }
+
+    .login{
+      margin-top: 350px;
+    }
+  </style>
+
+</head>
+
+<body>
+<%- body %>
+
+
+
+<!--SCRIPTS-->
+<script src="/dependencies/sails.io.js"></script>
+<script src="/dependencies/lodash.js"></script>
+<script src="/dependencies/jquery.min.js"></script>
+<script src="/dependencies/vue.js"></script>
+<script src="/dependencies/vue-router.js"></script>
+<script src="/dependencies/bootstrap-4/bootstrap-4.bundle.js"></script>
+<script src="/dependencies/cloud.js"></script>
+<script src="/dependencies/moment.js"></script>
+<script src="/dependencies/parasails.js"></script>
+<script src="/js/cloud.setup.js"></script>
+<script src="/js/components/ajax-button.component.js"></script>
+<script src="/js/components/ajax-form.component.js"></script>
+<script src="/js/components/js-timestamp.component.js"></script>
+<script src="/js/components/modal.component.js"></script>
+<script src="/js/utilities/open-stripe-checkout.js"></script>
+<script src="/js/pages/498.page.js"></script>
+<script src="/js/pages/account/account-overview.page.js"></script>
+<script src="/js/pages/account/edit-password.page.js"></script>
+<script src="/js/pages/account/edit-profile.page.js"></script>
+<script src="/js/pages/contact.page.js"></script>
+<script src="/js/pages/dashboard/welcome.page.js"></script>
+<script src="/js/pages/entrance/confirmed-email.page.js"></script>
+<script src="/js/pages/entrance/forgot-password.page.js"></script>
+<script src="/js/pages/entrance/login.page.js"></script>
+<script src="/js/pages/entrance/new-password.page.js"></script>
+<script src="/js/pages/entrance/signup.page.js"></script>
+<script src="/js/pages/faq.page.js"></script>
+<script src="/js/pages/homepage.page.js"></script>
+<script src="/js/pages/legal/privacy.page.js"></script>
+<script src="/js/pages/legal/terms.page.js"></script>
+<!--SCRIPTS END-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+    io.socket.on('connect', function(){
+      console.log("connected");
+      io.socket.post('/onConnect', '' ,function(data, data2){
+        console.log(data);
+      });
+    });
+
+    $("#send").click(function(){
+      content = $("textarea").val();
+
+      io.socket.post('/sendMessage', {content}, function(data, data2){
+        console.log(data);
+      });
+
+
+    });
+
+    io.socket.on('chat', function(data){
+      console.log(data);
+      content = "<li>" + data + "</li>";
+      $(".output").append(content);
+    });
+
+  });
+
+</script>
+
+</body>
+</html>

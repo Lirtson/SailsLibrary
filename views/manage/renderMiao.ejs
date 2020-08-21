@@ -1,0 +1,14 @@
+<!--views/manage/renderUser.ejs-->
+<div>
+  <table>
+    <thead>
+    <tr> <td>姓名</td> <td>年龄</td> </tr>
+    </thead>
+    <tbody>
+    <%for (var i = 0; i < miaos.length; i++) {%>
+    <tr>
+      <td> <%=miaos[i].name%> </td>
+      <td><%=miaos[i].age%> </td>
+    </tr> <%}%>
+    </tbody> </table>
+</div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="/js/dependencies/sails.io.js" autoConnect="false"></script>
+<script type="text/javascript">
+  function f1(){
+    /*
+    alert("in");
+    io.socket.on('connect', function(){
+      console.log("connected");
+      io.socket.post('/onConnect', '' ,function(data, data2){
+        console.log(data);
+        alert("connect success");
+      });
+    });
+    */
+    var mySocket = io.sails.connect();
+    mySocket.on('connect', function onConnect () {
+      console.log("Socket connected!");
+    });
+  }
+</script>
+
+<body>
+<div class="card-footer">
+  <textarea name="name" rows="8" cols="80" style="width: 100%"></textarea> <br>
+  <button type="button" name="button" id="send" class='btn btn-success' style="width: 100%" onclick="f1()">Send</button>
+</div>
+</body>
+</html>
