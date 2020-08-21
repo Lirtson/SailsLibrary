@@ -1,7 +1,7 @@
-#SailsLibrary 图书管理系统
+# SailsLibrary 图书管理系统
 
 ## Introduction 项目介绍
-This is a [Sails v1](https://sailsjs.com) application.Use mysql.
+This is a [Sails v1](https://sailsjs.com) application.Use mysql.  
 这是一个基于Sais v1的图书管理系统。使用mysql数据库。这个图书管理系统的主要功能有：图书的增删改查、用户的登录注册、图书借阅、维护图书封面、统计图书分组等。
 
 ## Run Steps 运行步骤
